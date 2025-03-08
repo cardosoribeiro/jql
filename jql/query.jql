@@ -1,0 +1,5 @@
+{
+    "using": { "tables": ["users"] },
+    "select": ["name", "email"]
+    "where": { "category": "admin" }    
+}

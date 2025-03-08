@@ -1,0 +1,73 @@
+<query> ::= "{" <query_fields> "}"
+
+<query_fields> ::= <table_field> ("," <query_field>)*
+
+<table_field> ::= "\"table\"" ":" <string>
+
+<query_field> ::= <select_field>
+                  | <where_field>
+                  | <order_by_field>
+                  | <insert_field>
+                  | <update_field>
+                  | <delete_field>
+
+<select_field> ::= "\"select\"" ":" "[" <string_list> "]"
+
+<where_field> ::= "\"where\"" ":" <condition>
+
+<order_by_field> ::= "\"orderBy\"" ":" "[" <order_by_list> "]"
+
+<order_by_list> ::= <order_by_item> ("," <order_by_item>)*
+
+<order_by_item> ::= "{" <string> ":" ("\"ASC\"" | "\"DESC\"") "}"
+
+<insert_field> ::= "\"insert\"" ":" "{" <key_value_pairs> "}"
+
+<update_field> ::= "\"update\"" ":" "{" <key_value_pairs> "}"
+
+<delete_field> ::= "\"delete\"" ":" <condition>
+
+<condition> ::= <logical_expression>
+
+<logical_expression> ::= <atomic_condition>
+                        | "{" "\"AND\"" ":" "[" <logical_expression_list> "]" "}"
+                        | "{" "\"OR\"" ":" "[" <logical_expression_list> "]" "}"
+                        | "{" "\"NOT\"" ":" <logical_expression> "}"
+                        | "{" "\"GROUP\"" ":" <logical_expression> "}"
+
+<logical_expression_list> ::= <logical_expression> ("," <logical_expression>)*
+
+<atomic_condition> ::= "{" <condition_item> "}"
+
+<condition_item> ::= <string> ":" <condition_value>
+
+<condition_value> ::= <equality_value>
+                    | <operator_value>
+
+<equality_value> ::= <value>
+
+<operator_value> ::= "{" <operator> ":" <value> "}"
+
+<operator> ::= "\"=\"" | "\"!=\"" | "\">\"" | "\"<\"" | "\">=\"" | "\"<=\"" | "\"LIKE\"" | "\"IN\""
+
+<value> ::= <string> | <number> | <boolean>
+
+<key_value_pairs> ::= <string_value_pair> ("," <string_value_pair>)*
+
+<string_value_pair> ::= <string> ":" <value>
+
+<string_list> ::= <string> ("," <string>)*
+
+<string> ::= "\"" <characters> "\""
+
+<number> ::= <digits>
+
+<boolean> ::= "true" | "false"
+
+<characters> ::= <character>*
+
+<character> ::= <any character except "\"">
+
+<digits> ::= <digit>+
+
+<digit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
