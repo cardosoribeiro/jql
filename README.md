@@ -49,6 +49,21 @@ JQL is built to bridge the gap between traditional SQL and the dynamic nature of
     mvn clean package
     ```
 
+3.  Copy the content of ./dependencies folder to ./jql/lib 
+
+    ```bash
+    copy ./dependencies/java-cup-11b-runtime.jar ./jql/lib/java-cup-11b-runtime.jar
+    copy ./dependencies/java-cup-11b.jar ./jql/lib/java-cup-11b.jar
+    copy ./dependencies/jflex-full-1.9.1.jar ./jql/lib/jflex-full-1.9.1.jar
+    ```
+    or 
+    
+    ```bat
+    copy .\dependencies\java-cup-11b-runtime.jar .\jql\lib\java-cup-11b-runtime.jar
+    copy .\dependencies\java-cup-11b.jar .\jql\lib\java-cup-11b.jar
+    copy .\dependencies\jflex-full-1.9.1.jar .\jql\lib\jflex-full-1.9.1.jar
+    ```
+
 ### Example
 
 
