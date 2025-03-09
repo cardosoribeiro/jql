@@ -24,11 +24,11 @@ parser code {:
 :};
 
 terminal LBRACE, RBRACE, LSQBRACE, RSQBRACE, COLON, COMMA;
-terminal USING, SELECT, WHERE, ORDERBY, INSERT, UPDATE, DELETE, AND, OR, NOT, GROUP, TABLES;
+terminal USING, SELECT, WHERE, ORDERBY, INSERT, UPDATE, DELETE, AND, OR, NOT, GROUP, TABLES, GROUPBY;
 terminal EQ, NE, LT, GT, LTE, GTE, LIKE, IN, ASC, DESC;
 terminal IDENTIFIER, STRING_LITERAL, INTEGER_LITERAL, FLOAT_LITERAL, DOUBLE_LITERAL, BOOLEAN_LITERAL;
 
-non terminal query, query_field, query_fields, using_field, select_field, where_field, order_by_field;
+non terminal query, query_field, query_fields, using_field, select_field, where_field, order_by_field, group_by_field;
 non terminal insert_field, update_field, delete_field;
 non terminal string_list, order_by_list, order_by_item, condition, logical_expression;
 non terminal logical_expression_list, atomic_condition, condition_item, condition_value, equality_value;
@@ -48,15 +48,18 @@ query_field ::= select_field
               | order_by_field
               | insert_field
               | update_field
-              | delete_field;
+              | delete_field
+              | group_by_field;
 
 using_field ::= USING COLON LBRACE TABLES COLON LSQBRACE string_list RSQBRACE RBRACE;
 
 select_field ::= SELECT COLON LSQBRACE string_list RSQBRACE;
 
-where_field ::= WHERE COLON condition;
+where_field ::= WHERE COLON condition;  
 
 order_by_field ::= ORDERBY COLON LSQBRACE order_by_list RSQBRACE;
+
+group_by_field ::= GROUPBY COLON LSQBRACE string_list RSQBRACE;
 
 insert_field ::= INSERT COLON LBRACE key_value_pairs RBRACE;
 
@@ -68,7 +71,7 @@ string_list ::= STRING_LITERAL
               | STRING_LITERAL COMMA string_list;
 
 order_by_list ::= order_by_item
-                 | order_by_item COMMA order_by_list;
+                | order_by_item COMMA order_by_list;
 
 order_by_item ::= LBRACE STRING_LITERAL COLON (ASC | DESC) RBRACE;
 

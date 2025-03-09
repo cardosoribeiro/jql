@@ -7,6 +7,7 @@ package com.celeritate.jql.syntactic;
 
 import java_cup.runtime.*;
 import com.celeritate.jql.lexic.Token;
+import com.celeritate.jql.ast.*;
 import java_cup.runtime.XMLElement;
 
 /** CUP v0.11b 20160615 (GIT 4ac7450) generated parser.
@@ -32,23 +33,24 @@ public class JQLParser extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\066\000\002\002\004\000\002\002\005\000\002\004" +
-    "\004\000\002\033\005\000\002\033\002\000\002\003\003" +
-    "\000\002\003\003\000\002\003\003\000\002\003\003\000" +
-    "\002\003\003\000\002\003\003\000\002\005\013\000\002" +
-    "\006\007\000\002\007\005\000\002\010\007\000\002\011" +
-    "\007\000\002\012\007\000\002\013\005\000\002\014\003" +
-    "\000\002\014\005\000\002\015\003\000\002\015\005\000" +
-    "\002\016\006\000\002\016\004\000\002\017\003\000\002" +
-    "\020\003\000\002\020\011\000\002\020\011\000\002\020" +
-    "\007\000\002\020\007\000\002\021\003\000\002\021\005" +
-    "\000\002\022\005\000\002\023\005\000\002\024\003\000" +
-    "\002\024\003\000\002\025\003\000\002\026\007\000\002" +
-    "\027\003\000\002\027\003\000\002\027\003\000\002\027" +
-    "\003\000\002\027\003\000\002\027\003\000\002\027\003" +
-    "\000\002\027\003\000\002\030\003\000\002\030\003\000" +
-    "\002\030\003\000\002\030\003\000\002\030\003\000\002" +
-    "\031\003\000\002\031\005\000\002\032\005" });
+    "\000\071\000\002\002\004\000\002\002\005\000\002\003" +
+    "\004\000\002\005\005\000\002\005\002\000\002\004\003" +
+    "\000\002\004\003\000\002\004\003\000\002\004\003\000" +
+    "\002\004\003\000\002\004\003\000\002\004\003\000\002" +
+    "\006\013\000\002\007\007\000\002\010\005\000\002\011" +
+    "\007\000\002\012\007\000\002\013\007\000\002\014\007" +
+    "\000\002\015\005\000\002\016\003\000\002\016\005\000" +
+    "\002\017\003\000\002\017\005\000\002\020\007\000\002" +
+    "\033\003\000\002\033\003\000\002\021\003\000\002\022" +
+    "\003\000\002\022\011\000\002\022\011\000\002\022\007" +
+    "\000\002\022\007\000\002\023\003\000\002\023\005\000" +
+    "\002\024\005\000\002\025\005\000\002\026\003\000\002" +
+    "\026\003\000\002\027\003\000\002\030\007\000\002\031" +
+    "\003\000\002\031\003\000\002\031\003\000\002\031\003" +
+    "\000\002\031\003\000\002\031\003\000\002\031\003\000" +
+    "\002\031\003\000\002\032\003\000\002\032\003\000\002" +
+    "\032\003\000\002\032\003\000\002\032\003\000\002\034" +
+    "\003\000\002\034\005\000\002\035\005" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -56,74 +58,77 @@ public class JQLParser extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\172\000\004\004\004\001\002\000\004\012\011\001" +
+    "\000\201\000\004\004\004\001\002\000\004\012\011\001" +
     "\002\000\004\002\006\001\002\000\004\002\001\001\002" +
-    "\000\004\005\174\001\002\000\006\005\ufffd\011\025\001" +
+    "\000\004\005\203\001\002\000\006\005\ufffd\011\025\001" +
     "\002\000\004\010\012\001\002\000\004\004\013\001\002" +
     "\000\004\025\014\001\002\000\004\010\015\001\002\000" +
-    "\004\006\016\001\002\000\004\041\020\001\002\000\004" +
-    "\007\023\001\002\000\006\007\uffef\011\021\001\002\000" +
-    "\004\041\020\001\002\000\004\007\uffee\001\002\000\004" +
-    "\005\024\001\002\000\006\005\ufff6\011\ufff6\001\002\000" +
-    "\016\013\040\014\030\015\043\016\041\017\032\020\037" +
-    "\001\002\000\004\005\uffff\001\002\000\006\005\ufff8\011" +
-    "\ufff8\001\002\000\004\010\172\001\002\000\006\005\ufffd" +
-    "\011\025\001\002\000\004\010\165\001\002\000\006\005" +
-    "\ufff9\011\ufff9\001\002\000\006\005\ufffb\011\ufffb\001\002" +
-    "\000\006\005\ufffa\011\ufffa\001\002\000\006\005\ufffc\011" +
-    "\ufffc\001\002\000\004\010\104\001\002\000\004\010\100" +
-    "\001\002\000\004\010\061\001\002\000\006\005\ufff7\011" +
-    "\ufff7\001\002\000\004\010\044\001\002\000\004\006\045" +
-    "\001\002\000\006\004\046\037\047\001\002\000\004\041" +
-    "\056\001\002\000\004\005\055\001\002\000\006\007\uffed" +
-    "\011\053\001\002\000\004\007\052\001\002\000\006\005" +
-    "\ufff3\011\ufff3\001\002\000\006\004\046\037\047\001\002" +
-    "\000\004\007\uffec\001\002\000\006\007\uffea\011\uffea\001" +
-    "\002\000\004\010\057\001\002\000\004\036\060\001\002" +
-    "\000\006\007\uffeb\011\uffeb\001\002\000\004\004\062\001" +
-    "\002\000\004\041\064\001\002\000\004\005\077\001\002" +
-    "\000\004\010\070\001\002\000\006\005\uffce\011\066\001" +
-    "\002\000\004\041\064\001\002\000\004\005\uffcd\001\002" +
-    "\000\014\041\076\042\071\043\074\044\072\045\073\001" +
-    "\002\000\006\005\uffd2\011\uffd2\001\002\000\006\005\uffd0" +
-    "\011\uffd0\001\002\000\006\005\uffcf\011\uffcf\001\002\000" +
-    "\006\005\uffd1\011\uffd1\001\002\000\006\005\uffcc\011\uffcc" +
-    "\001\002\000\006\005\uffd3\011\uffd3\001\002\000\006\005" +
-    "\ufff2\011\ufff2\001\002\000\004\006\101\001\002\000\004" +
-    "\041\020\001\002\000\004\007\103\001\002\000\006\005" +
-    "\ufff5\011\ufff5\001\002\000\004\004\105\001\002\000\014" +
-    "\021\113\022\116\023\112\024\115\041\114\001\002\000" +
-    "\010\005\uffe8\007\uffe8\011\uffe8\001\002\000\006\005\uffe9" +
-    "\011\uffe9\001\002\000\006\005\ufff0\011\ufff0\001\002\000" +
-    "\004\005\164\001\002\000\004\010\161\001\002\000\004" +
-    "\010\154\001\002\000\004\010\132\001\002\000\004\010" +
-    "\127\001\002\000\004\010\117\001\002\000\004\006\120" +
-    "\001\002\000\004\004\105\001\002\000\004\007\125\001" +
-    "\002\000\006\007\uffe3\011\123\001\002\000\004\004\105" +
-    "\001\002\000\004\007\uffe2\001\002\000\004\005\126\001" +
-    "\002\000\010\005\uffe6\007\uffe6\011\uffe6\001\002\000\004" +
-    "\004\105\001\002\000\004\005\131\001\002\000\010\005" +
-    "\uffe4\007\uffe4\011\uffe4\001\002\000\016\004\133\041\076" +
-    "\042\071\043\074\044\072\045\073\001\002\000\022\026" +
-    "\144\027\146\030\147\031\145\032\143\033\141\034\150" +
-    "\035\142\001\002\000\004\005\uffde\001\002\000\004\005" +
-    "\uffdf\001\002\000\004\005\uffdd\001\002\000\004\005\uffe0" +
-    "\001\002\000\004\010\151\001\002\000\004\010\uffd6\001" +
-    "\002\000\004\010\uffd4\001\002\000\004\010\uffd7\001\002" +
-    "\000\004\010\uffdb\001\002\000\004\010\uffd8\001\002\000" +
-    "\004\010\uffda\001\002\000\004\010\uffd9\001\002\000\004" +
-    "\010\uffd5\001\002\000\014\041\076\042\071\043\074\044" +
-    "\072\045\073\001\002\000\004\005\153\001\002\000\004" +
-    "\005\uffdc\001\002\000\004\006\155\001\002\000\004\004" +
-    "\105\001\002\000\004\007\157\001\002\000\004\005\160" +
-    "\001\002\000\010\005\uffe7\007\uffe7\011\uffe7\001\002\000" +
-    "\004\004\105\001\002\000\004\005\163\001\002\000\010" +
-    "\005\uffe5\007\uffe5\011\uffe5\001\002\000\010\005\uffe1\007" +
-    "\uffe1\011\uffe1\001\002\000\004\004\166\001\002\000\004" +
-    "\041\064\001\002\000\004\005\170\001\002\000\006\005" +
-    "\ufff1\011\ufff1\001\002\000\004\005\ufffe\001\002\000\004" +
-    "\004\105\001\002\000\006\005\ufff4\011\ufff4\001\002\000" +
-    "\004\002\000\001\002" });
+    "\004\006\016\001\002\000\004\042\020\001\002\000\004" +
+    "\007\023\001\002\000\006\007\uffed\011\021\001\002\000" +
+    "\004\042\020\001\002\000\004\007\uffec\001\002\000\004" +
+    "\005\024\001\002\000\006\005\ufff5\011\ufff5\001\002\000" +
+    "\020\013\042\014\030\015\045\016\043\017\033\020\041" +
+    "\026\031\001\002\000\004\005\uffff\001\002\000\006\005" +
+    "\ufff8\011\ufff8\001\002\000\004\010\201\001\002\000\004" +
+    "\010\175\001\002\000\006\005\ufffd\011\025\001\002\000" +
+    "\004\010\170\001\002\000\006\005\ufff6\011\ufff6\001\002" +
+    "\000\006\005\ufff9\011\ufff9\001\002\000\006\005\ufffb\011" +
+    "\ufffb\001\002\000\006\005\ufffa\011\ufffa\001\002\000\006" +
+    "\005\ufffc\011\ufffc\001\002\000\004\010\107\001\002\000" +
+    "\004\010\103\001\002\000\004\010\064\001\002\000\006" +
+    "\005\ufff7\011\ufff7\001\002\000\004\010\046\001\002\000" +
+    "\004\006\047\001\002\000\004\004\050\001\002\000\004" +
+    "\042\056\001\002\000\006\007\uffeb\011\054\001\002\000" +
+    "\004\007\053\001\002\000\006\005\ufff2\011\ufff2\001\002" +
+    "\000\004\004\050\001\002\000\004\007\uffea\001\002\000" +
+    "\004\010\057\001\002\000\006\037\061\040\062\001\002" +
+    "\000\004\005\063\001\002\000\004\005\uffe8\001\002\000" +
+    "\004\005\uffe7\001\002\000\006\007\uffe9\011\uffe9\001\002" +
+    "\000\004\004\065\001\002\000\004\042\067\001\002\000" +
+    "\004\005\102\001\002\000\004\010\073\001\002\000\006" +
+    "\005\uffcb\011\071\001\002\000\004\042\067\001\002\000" +
+    "\004\005\uffca\001\002\000\014\042\101\043\074\044\077" +
+    "\045\075\046\076\001\002\000\006\005\uffcf\011\uffcf\001" +
+    "\002\000\006\005\uffcd\011\uffcd\001\002\000\006\005\uffcc" +
+    "\011\uffcc\001\002\000\006\005\uffce\011\uffce\001\002\000" +
+    "\006\005\uffc9\011\uffc9\001\002\000\006\005\uffd0\011\uffd0" +
+    "\001\002\000\006\005\ufff0\011\ufff0\001\002\000\004\006" +
+    "\104\001\002\000\004\042\020\001\002\000\004\007\106" +
+    "\001\002\000\006\005\ufff4\011\ufff4\001\002\000\004\004" +
+    "\110\001\002\000\014\021\116\022\121\023\115\024\120" +
+    "\042\117\001\002\000\010\005\uffe5\007\uffe5\011\uffe5\001" +
+    "\002\000\006\005\uffe6\011\uffe6\001\002\000\006\005\uffee" +
+    "\011\uffee\001\002\000\004\005\167\001\002\000\004\010" +
+    "\164\001\002\000\004\010\157\001\002\000\004\010\135" +
+    "\001\002\000\004\010\132\001\002\000\004\010\122\001" +
+    "\002\000\004\006\123\001\002\000\004\004\110\001\002" +
+    "\000\004\007\130\001\002\000\006\007\uffe0\011\126\001" +
+    "\002\000\004\004\110\001\002\000\004\007\uffdf\001\002" +
+    "\000\004\005\131\001\002\000\010\005\uffe3\007\uffe3\011" +
+    "\uffe3\001\002\000\004\004\110\001\002\000\004\005\134" +
+    "\001\002\000\010\005\uffe1\007\uffe1\011\uffe1\001\002\000" +
+    "\016\004\136\042\101\043\074\044\077\045\075\046\076" +
+    "\001\002\000\022\027\147\030\151\031\152\032\150\033" +
+    "\146\034\144\035\153\036\145\001\002\000\004\005\uffdb" +
+    "\001\002\000\004\005\uffdc\001\002\000\004\005\uffda\001" +
+    "\002\000\004\005\uffdd\001\002\000\004\010\154\001\002" +
+    "\000\004\010\uffd3\001\002\000\004\010\uffd1\001\002\000" +
+    "\004\010\uffd4\001\002\000\004\010\uffd8\001\002\000\004" +
+    "\010\uffd5\001\002\000\004\010\uffd7\001\002\000\004\010" +
+    "\uffd6\001\002\000\004\010\uffd2\001\002\000\014\042\101" +
+    "\043\074\044\077\045\075\046\076\001\002\000\004\005" +
+    "\156\001\002\000\004\005\uffd9\001\002\000\004\006\160" +
+    "\001\002\000\004\004\110\001\002\000\004\007\162\001" +
+    "\002\000\004\005\163\001\002\000\010\005\uffe4\007\uffe4" +
+    "\011\uffe4\001\002\000\004\004\110\001\002\000\004\005" +
+    "\166\001\002\000\010\005\uffe2\007\uffe2\011\uffe2\001\002" +
+    "\000\010\005\uffde\007\uffde\011\uffde\001\002\000\004\004" +
+    "\171\001\002\000\004\042\067\001\002\000\004\005\173" +
+    "\001\002\000\006\005\uffef\011\uffef\001\002\000\004\005" +
+    "\ufffe\001\002\000\004\006\176\001\002\000\004\042\020" +
+    "\001\002\000\004\007\200\001\002\000\006\005\ufff1\011" +
+    "\ufff1\001\002\000\004\004\110\001\002\000\006\005\ufff3" +
+    "\011\ufff3\001\002\000\004\002\000\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -131,52 +136,55 @@ public class JQLParser extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\172\000\004\002\004\001\001\000\006\004\006\005" +
+    "\000\201\000\004\002\004\001\001\000\006\003\006\006" +
     "\007\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\004\033\025\001\001\000\002\001\001\000" +
+    "\001\001\000\004\005\025\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\004\014\016\001\001\000\002\001\001\000" +
-    "\002\001\001\000\004\014\021\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\020\003\030\006" +
-    "\035\007\033\010\034\011\032\012\026\013\041\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\004\033\170\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\006\015" +
-    "\050\016\047\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\006\015\053\016\047\001\001\000\002\001\001\000\002" +
+    "\001\001\000\004\016\016\001\001\000\002\001\001\000" +
+    "\002\001\001\000\004\016\021\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\022\004\031\007" +
+    "\037\010\035\011\036\012\033\013\034\014\026\015\043" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\006\031\062\032\064\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\006\031\066\032\064\001\001\000\002\001\001\000\004" +
-    "\030\074\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\004\014" +
-    "\101\001\001\000\002\001\001\000\002\001\001\000\010" +
-    "\017\107\020\106\022\105\001\001\000\004\023\110\001" +
-    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\010\020\121\021\120\022\105\001\001\000" +
-    "\002\001\001\000\002\001\001\000\010\020\121\021\123" +
-    "\022\105\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\006\020\127\022\105\001\001\000\002" +
-    "\001\001\000\002\001\001\000\012\024\136\025\134\026" +
-    "\133\030\135\001\001\000\004\027\137\001\001\000\002" +
+    "\001\000\002\001\001\000\004\005\173\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\006\017\051\020\050" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\006\017\054\020\050\001\001" +
+    "\000\002\001\001\000\002\001\001\000\004\033\057\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\006\034\065\035" +
+    "\067\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\006\034\071\035\067\001\001\000\002\001" +
+    "\001\000\004\032\077\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\004\016\104\001\001\000\002\001\001\000\002\001" +
+    "\001\000\010\021\112\022\111\024\110\001\001\000\004" +
+    "\025\113\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\010\022\124\023\123\024\110" +
+    "\001\001\000\002\001\001\000\002\001\001\000\010\022" +
+    "\124\023\126\024\110\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\006\022\132\024\110\001" +
+    "\001\000\002\001\001\000\002\001\001\000\012\026\141" +
+    "\027\137\030\136\032\140\001\001\000\004\031\142\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\004\032\154\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\010\022\124\023\160\024" +
+    "\110\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\006\022\164\024\110\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\006\034\171\035\067\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\004" +
-    "\030\151\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\010\020\121\021\155\022\105\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\006\020\161\022\105\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\006\031" +
-    "\166\032\064\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\010\017\172\020\106\022\105\001" +
-    "\001\000\002\001\001\000\002\001\001" });
+    "\016\176\001\001\000\002\001\001\000\002\001\001\000" +
+    "\010\021\201\022\111\024\110\001\001\000\002\001\001" +
+    "\000\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -268,7 +276,7 @@ class CUP$JQLParser$actions {
               Object RESULT =null;
 		int start_valleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).left;
 		int start_valright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).right;
-		Object start_val = (Object)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).value;
+		Query start_val = (Query)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).value;
 		RESULT = start_val;
               CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("$START",0, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
@@ -279,8 +287,11 @@ class CUP$JQLParser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 1: // query ::= LBRACE query_fields RBRACE 
             {
-              Object RESULT =null;
-
+              Query RESULT =null;
+		int qfleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).left;
+		int qfright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).right;
+		QueryFields qf = (QueryFields)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).value;
+		 RESULT = new Query(qf); 
               CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query",0, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
@@ -288,468 +299,689 @@ class CUP$JQLParser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 2: // query_fields ::= using_field query_field_list 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_fields",2, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              QueryFields RESULT =null;
+		int ufleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).left;
+		int ufright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).right;
+		UsingField uf = (UsingField)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).value;
+		int qflleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int qflright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		java.util.List<QueryField> qfl = (java.util.List<QueryField>)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = new QueryFields(uf, qfl); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_fields",1, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 3: // query_field_list ::= COMMA query_field query_field_list 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_field_list",25, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              java.util.List<QueryField> RESULT =null;
+		int qfleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).left;
+		int qfright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).right;
+		QueryField qf = (QueryField)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).value;
+		int qflleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int qflright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		java.util.List<QueryField> qfl = (java.util.List<QueryField>)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 qfl.add(0, qf); RESULT = qfl; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_field_list",3, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 4: // query_field_list ::= 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_field_list",25, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              java.util.List<QueryField> RESULT =null;
+		 RESULT = new java.util.ArrayList<QueryField>(); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_field_list",3, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 5: // query_field ::= select_field 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_field",1, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              QueryField RESULT =null;
+		int sfleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int sfright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		SelectField sf = (SelectField)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = sf; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_field",2, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 6: // query_field ::= where_field 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_field",1, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              QueryField RESULT =null;
+		int wfleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int wfright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		WhereField wf = (WhereField)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = wf; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_field",2, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 7: // query_field ::= order_by_field 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_field",1, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              QueryField RESULT =null;
+		int obfleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int obfright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		OrderByField obf = (OrderByField)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = obf; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_field",2, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 8: // query_field ::= insert_field 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_field",1, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              QueryField RESULT =null;
+		int infleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int infright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		InsertField inf = (InsertField)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = inf; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_field",2, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 9: // query_field ::= update_field 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_field",1, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              QueryField RESULT =null;
+		int upfleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int upfright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		UpdateField upf = (UpdateField)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = upf; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_field",2, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 10: // query_field ::= delete_field 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_field",1, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              QueryField RESULT =null;
+		int dfleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int dfright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		DeleteField df = (DeleteField)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = df; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_field",2, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 11: // using_field ::= USING COLON LBRACE TABLES COLON LSQBRACE string_list RSQBRACE RBRACE 
+          case 11: // query_field ::= group_by_field 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("using_field",3, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-8)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              QueryField RESULT =null;
+		int gbfleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int gbfright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		GroupByField gbf = (GroupByField)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = gbf; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("query_field",2, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 12: // select_field ::= SELECT COLON LSQBRACE string_list RSQBRACE 
+          case 12: // using_field ::= USING COLON LBRACE TABLES COLON LSQBRACE string_list RSQBRACE RBRACE 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("select_field",4, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              UsingField RESULT =null;
+		int slleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).left;
+		int slright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).right;
+		java.util.List<String> sl = (java.util.List<String>)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).value;
+		 RESULT = new UsingField(sl); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("using_field",4, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-8)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 13: // where_field ::= WHERE COLON condition 
+          case 13: // select_field ::= SELECT COLON LSQBRACE string_list RSQBRACE 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("where_field",5, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              SelectField RESULT =null;
+		int slleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).left;
+		int slright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).right;
+		java.util.List<String> sl = (java.util.List<String>)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).value;
+		 RESULT = new SelectField(sl); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("select_field",5, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 14: // order_by_field ::= ORDERBY COLON LSQBRACE order_by_list RSQBRACE 
+          case 14: // where_field ::= WHERE COLON condition 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("order_by_field",6, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              WhereField RESULT =null;
+		int cleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		Condition c = (Condition)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = new WhereField(c); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("where_field",6, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 15: // insert_field ::= INSERT COLON LBRACE key_value_pairs RBRACE 
+          case 15: // order_by_field ::= ORDERBY COLON LSQBRACE order_by_list RSQBRACE 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("insert_field",7, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              OrderByField RESULT =null;
+		int oblleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).left;
+		int oblright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).right;
+		java.util.List<OrderByItem> obl = (java.util.List<OrderByItem>)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).value;
+		 RESULT = new OrderByField(obl); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("order_by_field",7, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 16: // update_field ::= UPDATE COLON LBRACE key_value_pairs RBRACE 
+          case 16: // group_by_field ::= GROUPBY COLON LSQBRACE string_list RSQBRACE 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("update_field",8, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              GroupByField RESULT =null;
+		int slleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).left;
+		int slright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).right;
+		java.util.List<String> sl = (java.util.List<String>)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).value;
+		 RESULT = new GroupByField(sl); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("group_by_field",8, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 17: // delete_field ::= DELETE COLON condition 
+          case 17: // insert_field ::= INSERT COLON LBRACE key_value_pairs RBRACE 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("delete_field",9, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              InsertField RESULT =null;
+		int kvpleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).left;
+		int kvpright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).right;
+		java.util.List<StringValuePair> kvp = (java.util.List<StringValuePair>)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).value;
+		 RESULT = new InsertField(kvp); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("insert_field",9, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 18: // string_list ::= STRING_LITERAL 
+          case 18: // update_field ::= UPDATE COLON LBRACE key_value_pairs RBRACE 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("string_list",10, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              UpdateField RESULT =null;
+		int kvpleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).left;
+		int kvpright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).right;
+		java.util.List<StringValuePair> kvp = (java.util.List<StringValuePair>)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).value;
+		 RESULT = new UpdateField(kvp); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("update_field",10, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 19: // string_list ::= STRING_LITERAL COMMA string_list 
+          case 19: // delete_field ::= DELETE COLON condition 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("string_list",10, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              DeleteField RESULT =null;
+		int cleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		Condition c = (Condition)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = new DeleteField(c); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("delete_field",11, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 20: // order_by_list ::= order_by_item 
+          case 20: // string_list ::= STRING_LITERAL 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("order_by_list",11, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              java.util.List<String> RESULT =null;
+		int slleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int slright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		Object sl = (Object)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		
+        java.util.List<String> list = new java.util.ArrayList<String>();
+        String myStr = (String) sl;
+        list.add(myStr.substring(1, myStr.length() - 1));
+        RESULT = list;
+    
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("string_list",12, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 21: // order_by_list ::= order_by_item COMMA order_by_list 
+          case 21: // string_list ::= STRING_LITERAL COMMA string_list 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("order_by_list",11, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              java.util.List<String> RESULT =null;
+		int slleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).left;
+		int slright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).right;
+		Object sl = (Object)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).value;
+		int slsleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int slsright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		java.util.List<String> sls = (java.util.List<String>)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		
+        String myStr = (String) sl;
+        sls.add(0, myStr.substring(1, myStr.length() - 1));
+        RESULT = sls;
+    
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("string_list",12, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 22: // order_by_item ::= LBRACE STRING_LITERAL COLON ASC 
+          case 22: // order_by_list ::= order_by_item 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("order_by_item",12, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-3)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              java.util.List<OrderByItem> RESULT =null;
+		int obileft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int obiright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		OrderByItem obi = (OrderByItem)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		
+        java.util.List<OrderByItem> list = new java.util.ArrayList<OrderByItem>();
+        list.add(obi);
+        RESULT = list;
+    
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("order_by_list",13, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 23: // order_by_item ::= DESC RBRACE 
+          case 23: // order_by_list ::= order_by_item COMMA order_by_list 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("order_by_item",12, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              java.util.List<OrderByItem> RESULT =null;
+		int obileft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).left;
+		int obiright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).right;
+		OrderByItem obi = (OrderByItem)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).value;
+		int obilleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int obilright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		java.util.List<OrderByItem> obil = (java.util.List<OrderByItem>)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		
+        obil.add(0, obi);
+        RESULT = obil;
+    
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("order_by_list",13, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 24: // condition ::= logical_expression 
+          case 24: // order_by_item ::= LBRACE STRING_LITERAL COLON asc_desc RBRACE 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("condition",13, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              OrderByItem RESULT =null;
+		int nameleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-3)).left;
+		int nameright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-3)).right;
+		Object name = (Object)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-3)).value;
+		int adleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).left;
+		int adright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).right;
+		String ad = (String)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).value;
+		 String myStr = (String) name; RESULT = new OrderByItem(myStr.substring(1, myStr.length() - 1), ad); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("order_by_item",14, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 25: // logical_expression ::= atomic_condition 
+          case 25: // asc_desc ::= ASC 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("logical_expression",14, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              String RESULT =null;
+		 RESULT = "ASC"; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("asc_desc",25, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 26: // logical_expression ::= LBRACE AND COLON LSQBRACE logical_expression_list RSQBRACE RBRACE 
+          case 26: // asc_desc ::= DESC 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("logical_expression",14, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-6)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              String RESULT =null;
+		 RESULT = "DESC"; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("asc_desc",25, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 27: // logical_expression ::= LBRACE OR COLON LSQBRACE logical_expression_list RSQBRACE RBRACE 
+          case 27: // condition ::= logical_expression 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("logical_expression",14, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-6)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              Condition RESULT =null;
+		int leleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int leright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		LogicalExpression le = (LogicalExpression)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = new Condition(le); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("condition",15, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 28: // logical_expression ::= LBRACE NOT COLON logical_expression RBRACE 
+          case 28: // logical_expression ::= atomic_condition 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("logical_expression",14, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              LogicalExpression RESULT =null;
+		int acleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int acright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		AtomicCondition ac = (AtomicCondition)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = ac; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("logical_expression",16, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 29: // logical_expression ::= LBRACE GROUP COLON logical_expression RBRACE 
+          case 29: // logical_expression ::= LBRACE AND COLON LSQBRACE logical_expression_list RSQBRACE RBRACE 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("logical_expression",14, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              LogicalExpression RESULT =null;
+		int lelleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).left;
+		int lelright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).right;
+		java.util.List<LogicalExpression> lel = (java.util.List<LogicalExpression>)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).value;
+		 RESULT = new AndCondition(lel); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("logical_expression",16, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-6)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 30: // logical_expression_list ::= logical_expression 
+          case 30: // logical_expression ::= LBRACE OR COLON LSQBRACE logical_expression_list RSQBRACE RBRACE 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("logical_expression_list",15, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              LogicalExpression RESULT =null;
+		int lelleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).left;
+		int lelright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).right;
+		java.util.List<LogicalExpression> lel = (java.util.List<LogicalExpression>)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).value;
+		 RESULT = new OrCondition(lel); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("logical_expression",16, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-6)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 31: // logical_expression_list ::= logical_expression COMMA logical_expression_list 
+          case 31: // logical_expression ::= LBRACE NOT COLON logical_expression RBRACE 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("logical_expression_list",15, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              LogicalExpression RESULT =null;
+		int leleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).left;
+		int leright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).right;
+		LogicalExpression le = (LogicalExpression)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).value;
+		 RESULT = new NotCondition(le); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("logical_expression",16, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 32: // atomic_condition ::= LBRACE condition_item RBRACE 
+          case 32: // logical_expression ::= LBRACE GROUP COLON logical_expression RBRACE 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("atomic_condition",16, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              LogicalExpression RESULT =null;
+		int leleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).left;
+		int leright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).right;
+		LogicalExpression le = (LogicalExpression)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).value;
+		 RESULT = new GroupCondition(le); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("logical_expression",16, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 33: // condition_item ::= STRING_LITERAL COLON condition_value 
+          case 33: // logical_expression_list ::= logical_expression 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("condition_item",17, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              java.util.List<LogicalExpression> RESULT =null;
+		int leleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int leright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		LogicalExpression le = (LogicalExpression)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		
+        java.util.List<LogicalExpression> list = new java.util.ArrayList<LogicalExpression>();
+        list.add(le);
+        RESULT = list;
+    
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("logical_expression_list",17, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 34: // condition_value ::= equality_value 
+          case 34: // logical_expression_list ::= logical_expression COMMA logical_expression_list 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("condition_value",18, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              java.util.List<LogicalExpression> RESULT =null;
+		int leleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).left;
+		int leright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).right;
+		LogicalExpression le = (LogicalExpression)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).value;
+		int lelleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int lelright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		java.util.List<LogicalExpression> lel = (java.util.List<LogicalExpression>)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		
+        lel.add(0, le);
+        RESULT = lel;
+    
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("logical_expression_list",17, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 35: // condition_value ::= operator_value 
+          case 35: // atomic_condition ::= LBRACE condition_item RBRACE 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("condition_value",18, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              AtomicCondition RESULT =null;
+		int cileft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).left;
+		int ciright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).right;
+		ConditionItem ci = (ConditionItem)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).value;
+		 RESULT = new AtomicCondition(ci); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("atomic_condition",18, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 36: // equality_value ::= value 
+          case 36: // condition_item ::= STRING_LITERAL COLON condition_value 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("equality_value",19, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              ConditionItem RESULT =null;
+		int nameleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).left;
+		int nameright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).right;
+		Object name = (Object)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).value;
+		int cvleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int cvright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		ConditionValue cv = (ConditionValue)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 String myStr = (String) name; RESULT = new ConditionItem(myStr.substring(1, myStr.length() - 1), cv); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("condition_item",19, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 37: // operator_value ::= LBRACE operator COLON value RBRACE 
+          case 37: // condition_value ::= equality_value 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator_value",20, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              ConditionValue RESULT =null;
+		int evleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int evright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		String ev = (String)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 String myStr = (String) ev; RESULT = new ConditionValue("=", myStr.substring(1, myStr.length() - 1)); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("condition_value",20, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 38: // operator ::= EQ 
+          case 38: // condition_value ::= operator_value 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator",21, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              ConditionValue RESULT =null;
+		int ovleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int ovright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		ConditionValue ov = (ConditionValue)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = ov; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("condition_value",20, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 39: // operator ::= NE 
+          case 39: // equality_value ::= value 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator",21, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              String RESULT =null;
+		int vleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int vright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		String v = (String)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = v; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("equality_value",21, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 40: // operator ::= LT 
+          case 40: // operator_value ::= LBRACE operator COLON value RBRACE 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator",21, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              ConditionValue RESULT =null;
+		int opleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-3)).left;
+		int opright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-3)).right;
+		String op = (String)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-3)).value;
+		int vleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).left;
+		int vright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).right;
+		String v = (String)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).value;
+		 String myStr = (String) v; RESULT = new ConditionValue(op, myStr.substring(1, myStr.length() - 1)); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator_value",22, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 41: // operator ::= GT 
+          case 41: // operator ::= EQ 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator",21, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              String RESULT =null;
+		 RESULT = "="; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator",23, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 42: // operator ::= LTE 
+          case 42: // operator ::= NE 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator",21, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              String RESULT =null;
+		 RESULT = "!="; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator",23, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 43: // operator ::= GTE 
+          case 43: // operator ::= LT 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator",21, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              String RESULT =null;
+		 RESULT = "<"; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator",23, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 44: // operator ::= LIKE 
+          case 44: // operator ::= GT 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator",21, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              String RESULT =null;
+		 RESULT = ">"; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator",23, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 45: // operator ::= IN 
+          case 45: // operator ::= LTE 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator",21, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              String RESULT =null;
+		 RESULT = "<="; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator",23, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 46: // value ::= STRING_LITERAL 
+          case 46: // operator ::= GTE 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("value",22, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              String RESULT =null;
+		 RESULT = ">="; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator",23, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 47: // value ::= INTEGER_LITERAL 
+          case 47: // operator ::= LIKE 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("value",22, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              String RESULT =null;
+		 RESULT = "LIKE"; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator",23, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 48: // value ::= FLOAT_LITERAL 
+          case 48: // operator ::= IN 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("value",22, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              String RESULT =null;
+		 RESULT = "IN"; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator",23, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 49: // value ::= DOUBLE_LITERAL 
+          case 49: // value ::= STRING_LITERAL 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("value",22, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              String RESULT =null;
+		int slleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int slright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		Object sl = (Object)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = (String)sl; 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("value",24, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 50: // value ::= BOOLEAN_LITERAL 
+          case 50: // value ::= INTEGER_LITERAL 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("value",22, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              String RESULT =null;
+		int illeft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int ilright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		Object il = (Object)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = String.valueOf(il); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("value",24, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 51: // key_value_pairs ::= string_value_pair 
+          case 51: // value ::= FLOAT_LITERAL 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("key_value_pairs",23, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              String RESULT =null;
+		int flleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int flright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		Object fl = (Object)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = String.valueOf(fl); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("value",24, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 52: // key_value_pairs ::= string_value_pair COMMA key_value_pairs 
+          case 52: // value ::= DOUBLE_LITERAL 
             {
-              Object RESULT =null;
-
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("key_value_pairs",23, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+              String RESULT =null;
+		int dlleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int dlright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		Object dl = (Object)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = String.valueOf(dl); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("value",24, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 53: // string_value_pair ::= STRING_LITERAL COLON value 
+          case 53: // value ::= BOOLEAN_LITERAL 
             {
-              Object RESULT =null;
+              String RESULT =null;
+		int blleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int blright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		Object bl = (Object)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		 RESULT = String.valueOf(bl); 
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("value",24, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+            }
+          return CUP$JQLParser$result;
 
-              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("string_value_pair",24, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 54: // key_value_pairs ::= string_value_pair 
+            {
+              java.util.List<StringValuePair> RESULT =null;
+		int svpleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int svpright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		StringValuePair svp = (StringValuePair)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		
+        java.util.List<StringValuePair> list = new java.util.ArrayList<StringValuePair>();
+        list.add(svp);
+        RESULT = list;
+    
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("key_value_pairs",26, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+            }
+          return CUP$JQLParser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 55: // key_value_pairs ::= string_value_pair COMMA key_value_pairs 
+            {
+              java.util.List<StringValuePair> RESULT =null;
+		int svpleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).left;
+		int svpright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).right;
+		StringValuePair svp = (StringValuePair)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).value;
+		int kvpsleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int kvpsright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		java.util.List<StringValuePair> kvps = (java.util.List<StringValuePair>)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		
+        kvps.add(0, svp);
+        RESULT = kvps;
+    
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("key_value_pairs",26, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
+            }
+          return CUP$JQLParser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 56: // string_value_pair ::= STRING_LITERAL COLON value 
+            {
+              StringValuePair RESULT =null;
+		int nameleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).left;
+		int nameright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).right;
+		Object name = (Object)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)).value;
+		int valleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
+		int valright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
+		String val = (String)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
+		
+    String myStr = (String) name; String myStr2 = (String) val; RESULT = new StringValuePair(myStr.substring(1, myStr.length() - 1), myStr2.substring(1, myStr2.length() - 1));
+
+              CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("string_value_pair",27, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
 

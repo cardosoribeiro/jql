@@ -1,0 +1,168 @@
+package com.celeritate.jql.syntactic;
+
+import java_cup.runtime.*;
+import com.celeritate.jql.lexic.Token;
+import com.celeritate.jql.ast.*; // Import the AST classes
+
+scan with {:
+    return this.getScanner().next_token();
+:};
+
+parser code {:
+    public void report_error(String message, Object info) {
+        StringBuilder m = new StringBuilder("Error ");
+        if (info instanceof java_cup.runtime.Symbol) {
+            m.append("(" + info.toString() + ")");
+        }
+        m.append(" : " + message);
+        System.out.println(m);
+    }
+    public void report_fatal_error(String message, Object info) {
+        report_error(message, info);
+        throw new RuntimeException("Fatal Syntax Error");
+    }
+:};
+
+terminal LBRACE, RBRACE, LSQBRACE, RSQBRACE, COLON, COMMA;
+terminal USING, SELECT, WHERE, ORDERBY, INSERT, UPDATE, DELETE, AND, OR, NOT, GROUP, TABLES, GROUPBY;
+terminal EQ, NE, LT, GT, LTE, GTE, LIKE, IN, ASC, DESC;
+terminal IDENTIFIER, STRING_LITERAL, INTEGER_LITERAL, FLOAT_LITERAL, DOUBLE_LITERAL, BOOLEAN_LITERAL;
+
+non terminal Query query;
+non terminal QueryFields query_fields;
+non terminal QueryField query_field;
+non terminal java.util.List<QueryField> query_field_list;
+non terminal UsingField using_field;
+non terminal SelectField select_field;
+non terminal WhereField where_field;
+non terminal OrderByField order_by_field;
+non terminal GroupByField group_by_field;
+non terminal InsertField insert_field;
+non terminal UpdateField update_field;
+non terminal DeleteField delete_field;
+non terminal java.util.List<String> string_list;
+non terminal java.util.List<OrderByItem> order_by_list;
+non terminal OrderByItem order_by_item;
+non terminal Condition condition;
+non terminal LogicalExpression logical_expression;
+non terminal java.util.List<LogicalExpression> logical_expression_list;
+non terminal AtomicCondition atomic_condition;
+non terminal ConditionItem condition_item;
+non terminal ConditionValue condition_value;
+non terminal String equality_value;
+non terminal ConditionValue operator_value;
+non terminal String operator;
+non terminal String value;
+non terminal String asc_desc;
+non terminal java.util.List<StringValuePair> key_value_pairs;
+non terminal StringValuePair string_value_pair;
+
+start with query;
+
+query ::= LBRACE query_fields:qf RBRACE {: RESULT = new Query(qf); :};
+
+query_fields ::= using_field:uf query_field_list:qfl {: RESULT = new QueryFields(uf, qfl); :};
+
+query_field_list ::= COMMA query_field:qf query_field_list:qfl {: qfl.add(0, qf); RESULT = qfl; :}
+                   | {: RESULT = new java.util.ArrayList<QueryField>(); :};
+
+query_field ::= select_field:sf {: RESULT = sf; :}
+              | where_field:wf {: RESULT = wf; :}
+              | order_by_field:obf {: RESULT = obf; :}
+              | insert_field:inf {: RESULT = inf; :}
+              | update_field:upf {: RESULT = upf; :}
+              | delete_field:df {: RESULT = df; :}
+              | group_by_field:gbf {: RESULT = gbf; :};
+
+using_field ::= USING COLON LBRACE TABLES COLON LSQBRACE string_list:sl RSQBRACE RBRACE {: RESULT = new UsingField(sl); :};
+
+select_field ::= SELECT COLON LSQBRACE string_list:sl RSQBRACE {: RESULT = new SelectField(sl); :};
+
+where_field ::= WHERE COLON condition:c {: RESULT = new WhereField(c); :};
+
+order_by_field ::= ORDERBY COLON LSQBRACE order_by_list:obl RSQBRACE {: RESULT = new OrderByField(obl); :};
+
+group_by_field ::= GROUPBY COLON LSQBRACE string_list:sl RSQBRACE {: RESULT = new GroupByField(sl); :};
+
+insert_field ::= INSERT COLON LBRACE key_value_pairs:kvp RBRACE {: RESULT = new InsertField(kvp); :};
+
+update_field ::= UPDATE COLON LBRACE key_value_pairs:kvp RBRACE {: RESULT = new UpdateField(kvp); :};
+
+delete_field ::= DELETE COLON condition:c {: RESULT = new DeleteField(c); :};
+
+string_list ::= STRING_LITERAL:sl {:
+        java.util.List<String> list = new java.util.ArrayList<String>();
+        String myStr = (String) sl;
+        list.add(myStr.substring(1, myStr.length() - 1));
+        RESULT = list;
+    :}
+              | STRING_LITERAL:sl COMMA string_list:sls {:
+        String myStr = (String) sl;
+        sls.add(0, myStr.substring(1, myStr.length() - 1));
+        RESULT = sls;
+    :};
+
+order_by_list ::= order_by_item:obi {:
+        java.util.List<OrderByItem> list = new java.util.ArrayList<OrderByItem>();
+        list.add(obi);
+        RESULT = list;
+    :}
+                | order_by_item:obi COMMA order_by_list:obil {:
+        obil.add(0, obi);
+        RESULT = obil;
+    :};
+
+order_by_item ::= LBRACE STRING_LITERAL:name COLON asc_desc:ad RBRACE {: String myStr = (String) name; RESULT = new OrderByItem(myStr.substring(1, myStr.length() - 1), ad); :};
+
+asc_desc ::= ASC {: RESULT = "ASC"; :} | DESC {: RESULT = "DESC"; :};
+
+condition ::= logical_expression:le {: RESULT = new Condition(le); :};
+
+logical_expression ::= atomic_condition:ac {: RESULT = ac; :}
+                     | LBRACE AND COLON LSQBRACE logical_expression_list:lel RSQBRACE RBRACE {: RESULT = new AndCondition(lel); :}
+                     | LBRACE OR COLON LSQBRACE logical_expression_list:lel RSQBRACE RBRACE {: RESULT = new OrCondition(lel); :}
+                     | LBRACE NOT COLON logical_expression:le RBRACE {: RESULT = new NotCondition(le); :}
+                     | LBRACE GROUP COLON logical_expression:le RBRACE {: RESULT = new GroupCondition(le); :};
+
+logical_expression_list ::= logical_expression:le {:
+        java.util.List<LogicalExpression> list = new java.util.ArrayList<LogicalExpression>();
+        list.add(le);
+        RESULT = list;
+    :}
+                          | logical_expression:le COMMA logical_expression_list:lel {:
+        lel.add(0, le);
+        RESULT = lel;
+    :};
+
+atomic_condition ::= LBRACE condition_item:ci RBRACE {: RESULT = new AtomicCondition(ci); :};
+
+condition_item ::= STRING_LITERAL:name COLON condition_value:cv {: String myStr = (String) name; RESULT = new ConditionItem(myStr.substring(1, myStr.length() - 1), cv); :};
+
+condition_value ::= equality_value:ev {: String myStr = (String) ev; RESULT = new ConditionValue("=", myStr.substring(1, myStr.length() - 1)); :}
+                  | operator_value:ov {: RESULT = ov; :};
+
+equality_value ::= value:v {: RESULT = v; :};
+
+operator_value ::= LBRACE operator:op COLON value:v RBRACE {: String myStr = (String) v; RESULT = new ConditionValue(op, myStr.substring(1, myStr.length() - 1)); :};
+
+operator ::= EQ {: RESULT = "="; :} | NE {: RESULT = "!="; :} | LT {: RESULT = "<"; :} | GT {: RESULT = ">"; :} | LTE {: RESULT = "<="; :} | GTE {: RESULT = ">="; :} | LIKE {: RESULT = "LIKE"; :} | IN {: RESULT = "IN"; :};
+
+value ::= STRING_LITERAL:sl {: RESULT = (String)sl; :}
+        | INTEGER_LITERAL:il {: RESULT = String.valueOf(il); :}
+        | FLOAT_LITERAL:fl {: RESULT = String.valueOf(fl); :}
+        | DOUBLE_LITERAL:dl {: RESULT = String.valueOf(dl); :}
+        | BOOLEAN_LITERAL:bl {: RESULT = String.valueOf(bl); :};
+
+key_value_pairs ::= string_value_pair:svp {:
+        java.util.List<StringValuePair> list = new java.util.ArrayList<StringValuePair>();
+        list.add(svp);
+        RESULT = list;
+    :}
+                  | string_value_pair:svp COMMA key_value_pairs:kvps {:
+        kvps.add(0, svp);
+        RESULT = kvps;
+    :};
+
+string_value_pair ::= STRING_LITERAL:name COLON value:val {:
+    String myStr = (String) name; String myStr2 = (String) val; RESULT = new StringValuePair(myStr.substring(1, myStr.length() - 1), myStr2.substring(1, myStr2.length() - 1));
+:};
