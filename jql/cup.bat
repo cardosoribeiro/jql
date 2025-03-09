@@ -1,0 +1,1 @@
+java -jar .\lib\java-cup-11b.jar -parser JQLParser .\src\main\java\com\celeritate\jql\syntactic\JqlParser.cup

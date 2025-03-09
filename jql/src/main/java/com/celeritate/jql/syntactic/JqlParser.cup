@@ -1,0 +1,108 @@
+package com.celeritate.jql.syntactic;
+
+import java_cup.runtime.*;
+import com.celeritate.jql.lexic.Token;
+
+
+scan with {:
+    return this.getScanner().next_token();
+:};
+
+parser code {:
+    public void report_error(String message, Object info) {
+        StringBuilder m = new StringBuilder("Error ");
+        if (info instanceof java_cup.runtime.Symbol) {
+            m.append("(" + info.toString() + ")");
+        }
+        m.append(" : " + message);
+        System.out.println(m);
+    }
+    public void report_fatal_error(String message, Object info) {
+        report_error(message, info);
+        throw new RuntimeException("Fatal Syntax Error");
+    }
+:};
+
+terminal LBRACE, RBRACE, LSQBRACE, RSQBRACE, COLON, COMMA;
+terminal USING, SELECT, WHERE, ORDERBY, INSERT, UPDATE, DELETE, AND, OR, NOT, GROUP, TABLES;
+terminal EQ, NE, LT, GT, LTE, GTE, LIKE, IN, ASC, DESC;
+terminal IDENTIFIER, STRING_LITERAL, INTEGER_LITERAL, FLOAT_LITERAL, DOUBLE_LITERAL, BOOLEAN_LITERAL;
+
+non terminal query, query_field, query_fields, using_field, select_field, where_field, order_by_field;
+non terminal insert_field, update_field, delete_field;
+non terminal string_list, order_by_list, order_by_item, condition, logical_expression;
+non terminal logical_expression_list, atomic_condition, condition_item, condition_value, equality_value;
+non terminal operator_value, operator, value, key_value_pairs, string_value_pair, query_field_list;
+
+start with query;
+
+query ::= LBRACE query_fields RBRACE;
+
+query_fields ::= using_field query_field_list;
+
+query_field_list ::= COMMA query_field query_field_list
+                    | ;
+
+query_field ::= select_field
+              | where_field
+              | order_by_field
+              | insert_field
+              | update_field
+              | delete_field;
+
+using_field ::= USING COLON LBRACE TABLES COLON LSQBRACE string_list RSQBRACE RBRACE;
+
+select_field ::= SELECT COLON LSQBRACE string_list RSQBRACE;
+
+where_field ::= WHERE COLON condition;
+
+order_by_field ::= ORDERBY COLON LSQBRACE order_by_list RSQBRACE;
+
+insert_field ::= INSERT COLON LBRACE key_value_pairs RBRACE;
+
+update_field ::= UPDATE COLON LBRACE key_value_pairs RBRACE;
+
+delete_field ::= DELETE COLON condition;
+
+string_list ::= STRING_LITERAL
+              | STRING_LITERAL COMMA string_list;
+
+order_by_list ::= order_by_item
+                 | order_by_item COMMA order_by_list;
+
+order_by_item ::= LBRACE STRING_LITERAL COLON (ASC | DESC) RBRACE;
+
+condition ::= logical_expression;
+
+logical_expression ::= atomic_condition
+                     | LBRACE AND COLON LSQBRACE logical_expression_list RSQBRACE RBRACE
+                     | LBRACE OR COLON LSQBRACE logical_expression_list RSQBRACE RBRACE
+                     | LBRACE NOT COLON logical_expression RBRACE
+                     | LBRACE GROUP COLON logical_expression RBRACE;
+
+logical_expression_list ::= logical_expression
+                            | logical_expression COMMA logical_expression_list;
+
+atomic_condition ::= LBRACE condition_item RBRACE;
+
+condition_item ::= STRING_LITERAL COLON condition_value;
+
+condition_value ::= equality_value
+                  | operator_value;
+
+equality_value ::= value;
+
+operator_value ::= LBRACE operator COLON value RBRACE;
+
+operator ::= EQ | NE | LT | GT | LTE | GTE | LIKE | IN;
+
+value ::= STRING_LITERAL
+        | INTEGER_LITERAL
+        | FLOAT_LITERAL
+        | DOUBLE_LITERAL
+        | BOOLEAN_LITERAL;
+
+key_value_pairs ::= string_value_pair
+                  | string_value_pair COMMA key_value_pairs;
+
+string_value_pair ::= STRING_LITERAL COLON value;

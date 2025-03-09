@@ -75,25 +75,24 @@ StringLiteral = \"[^\"]*\" | \'[^\']*\'
 
 <YYINITIAL> {
 
-    "\"using\""          { return token(USING); }
-    "\"select\""         { return token(SELECT); }
-    "\"insert\""         { return token(INSERT); }
-    "\"update\""         { return token(UPDATE); }
-    "\"delete\""         { return token(DELETE); }
-    "\"where\""          { return token(WHERE); }
-    "\"tables\""          { return token(TABLES); }
-    "\"groupBy\""        { return token(GROUPBY); }
-    "\"orderBy\""        { return token(ORDERBY); }
-    "\"ASC\""            { return token(ASC); }
-    "\"DESC\""           { return token(DESC); }
+    "using"          { return token(USING); }
+    "select"         { return token(SELECT); }
+    "insert"         { return token(INSERT); }
+    "update"         { return token(UPDATE); }
+    "delete"         { return token(DELETE); }
+    "where"          { return token(WHERE); }
+    "groupBy"        { return token(GROUPBY); }
+    "orderBy"        { return token(ORDERBY); }
+    "ASC"            { return token(ASC); }
+    "DESC"           { return token(DESC); }
 
 
-    "\"=\""   { return token(EQ); }
-    "\"!=\""  { return token(NE); }
-    "\"<\""   { return token(LT); }
-    "\">\""   { return token(GT); }
-    "\"<=\""  { return token(LTE); }
-    "\">=\""  { return token(GTE); }
+    "="   { return token(EQ); }
+    "!="  { return token(NE); }
+    "<"   { return token(LT); }
+    ">"   { return token(GT); }
+    "<="  { return token(LTE); }
+    ">="  { return token(GTE); }
     
     "{"         { return token(LBRACE); }
     "}"         { return token(RBRACE); }
@@ -103,10 +102,10 @@ StringLiteral = \"[^\"]*\" | \'[^\']*\'
     ","         { return token(COMMA); }
 
 
-    "\"AND\""   { return token(AND); }
-    "\"OR\""    { return token(OR); }
-    "\"NOT\""   { return token(NOT); }
-    "\"GROUP\"" { return token(GROUP); }
+    "AND"   { return token(AND); }
+    "OR"    { return token(OR); }
+    "NOT"   { return token(NOT); }
+    "GROUP" { return token(GROUP); }
 
     {WhiteSpace} { /* Ignore whitespace */ }
     {Comment} { /* Ignore comments */ }
