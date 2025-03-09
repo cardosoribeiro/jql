@@ -14,5 +14,7 @@ public class Condition extends AST {
         this.logicalExpression = logicalExpression;
     }    
         
-	//public Object accept(JQLVisitor visitor);
+	public Object accept(JQLVisitor visitor) {
+        return visitor.visitCondition(this);
+    }
 }

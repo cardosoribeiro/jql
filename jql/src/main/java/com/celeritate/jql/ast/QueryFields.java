@@ -19,5 +19,7 @@ public class QueryFields extends AST {
 		this.queryFieldList = queryFieldList;
 	}
 
-	//public Object accept(JQLVisitor visitor);
+	public Object accept(JQLVisitor visitor) {
+        return visitor.visitQueryFields(this);
+    }
 }

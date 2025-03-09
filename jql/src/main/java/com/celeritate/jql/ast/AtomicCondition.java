@@ -14,5 +14,7 @@ public class AtomicCondition extends LogicalExpression {
         this.conditionItem = conditionItem;        
     }    
         
-	//public Object accept(JQLVisitor visitor);
+	public Object accept(JQLVisitor visitor) {
+        return visitor.visitAtomicCondition(this);
+    }
 }

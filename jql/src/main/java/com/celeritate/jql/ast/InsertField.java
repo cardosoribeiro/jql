@@ -16,5 +16,7 @@ public class InsertField extends QueryField {
         this.keyValuePairs = keyValuePairs;
     }    
         
-	//public Object accept(JQLVisitor visitor);
+	public Object accept(JQLVisitor visitor) {
+        return visitor.visitInsertField(this);
+    }
 }

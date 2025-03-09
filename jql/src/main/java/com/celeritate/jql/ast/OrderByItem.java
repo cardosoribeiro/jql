@@ -17,5 +17,7 @@ public class OrderByItem extends AST {
         this.asc_desc = asc_desc;
     }    
         
-	//public Object accept(JQLVisitor visitor);
+	public Object accept(JQLVisitor visitor) {
+        return visitor.visitOrderByItem(this);
+    }
 }

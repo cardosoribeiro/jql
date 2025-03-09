@@ -14,5 +14,7 @@ public class NotCondition extends LogicalExpression {
         this.logicalExpression = logicalExpression;
     }    
         
-	//public Object accept(JQLVisitor visitor);
+	public Object accept(JQLVisitor visitor) {
+        return visitor.visitNotCondition(this);
+    }
 }

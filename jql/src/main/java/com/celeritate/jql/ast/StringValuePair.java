@@ -17,5 +17,7 @@ public class StringValuePair extends AST {
         this.value = value;
     }    
         
-	//public Object accept(JQLVisitor visitor);
+	public Object accept(JQLVisitor visitor) {
+        return visitor.visitStringValuePair(this);
+    }
 }

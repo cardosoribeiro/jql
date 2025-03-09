@@ -16,5 +16,7 @@ public class GroupByField extends QueryField {
         this.stringList = stringList;
     }    
         
-	//public Object accept(JQLVisitor visitor);
+	public Object accept(JQLVisitor visitor) {
+        return visitor.visitGroupByField(this);
+    }
 }

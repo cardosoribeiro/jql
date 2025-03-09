@@ -16,5 +16,7 @@ public class OrCondition extends LogicalExpression {
         this.logicalExpressionList = logicalExpressionList;
     }    
         
-	//public Object accept(JQLVisitor visitor);
+	public Object accept(JQLVisitor visitor) {
+        return visitor.visitOrCondition(this);
+    }
 }

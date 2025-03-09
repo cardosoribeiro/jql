@@ -14,5 +14,7 @@ public class DeleteField extends QueryField {
         this.condition = condition;
     }    
         
-	//public Object accept(JQLVisitor visitor);
+	public Object accept(JQLVisitor visitor) {
+       return  visitor.visitDeleteField(this);
+    }
 }

@@ -17,5 +17,7 @@ public class OrderByField extends QueryField {
         this.orderByList = orderByList;
     }    
         
-	//public Object accept(JQLVisitor visitor);
+	public Object accept(JQLVisitor visitor) {
+        return visitor.visitOrderByField(this);
+    }
 }
