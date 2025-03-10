@@ -1,2 +1,2 @@
-1. Test if the string are treated correctly in the JqlParser.ast.cup
-2. Use the error terminal in the parser {: System.err.println("Error in query. Skipping to end of query."); :};
+- TODO [HIGH] (John, 2025-03-09): Test if the string are treated correctly in the JqlParser.ast.cup
+- TODO [HIGH] (John, 2025-03-09): Use the error terminal in the parser. Ex.: {: System.err.println("Error in query. Skipping to end of query."); :};
