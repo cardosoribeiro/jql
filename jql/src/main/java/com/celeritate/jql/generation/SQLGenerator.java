@@ -27,13 +27,13 @@ public class SQLGenerator implements JQLVisitor {
             }
         }
         sb.append(")");
-        queryModel.setCurrentConditionPart(sb.toString());
+        queryModel.setCurrentConditionPart(sb.toString());    
         return null;
     }
 
     @Override
     public Object visitAtomicCondition(AtomicCondition atomicCondition) {
-        atomicCondition.conditionItem.accept(this);
+        atomicCondition.conditionItem.accept(this);        
         return null;
     }
 
@@ -41,6 +41,7 @@ public class SQLGenerator implements JQLVisitor {
     public Object visitCondition(Condition condition) {
         if (condition.logicalExpression != null) {
             condition.logicalExpression.accept(this);
+            queryModel.setWhereClause(queryModel.getWhereClause() + queryModel.getCurrentConditionPart());
         }
         return null;
     }
@@ -48,7 +49,7 @@ public class SQLGenerator implements JQLVisitor {
     @Override
     public Object visitConditionItem(ConditionItem conditionItem) {
         conditionItem.value.accept(this);
-        queryModel.setCurrentConditionPart(conditionItem.name + " " + queryModel.getCurrentConditionPart());
+        queryModel.setCurrentConditionPart(conditionItem.name + " " + queryModel.getCurrentConditionPart());            
         return null;
     }
 
@@ -63,7 +64,7 @@ public class SQLGenerator implements JQLVisitor {
         queryModel.setOperation("DELETE");
         deleteField.condition.accept(this);
         return null;
-    }
+    }   
 
     @Override
     public Object visitGroupByField(GroupByField groupByField) {
@@ -89,7 +90,7 @@ public class SQLGenerator implements JQLVisitor {
     @Override
     public Object visitNotCondition(NotCondition notCondition) {
         queryModel.setCurrentConditionPart("NOT ");
-        notCondition.logicalExpression.accept(this);
+        notCondition.logicalExpression.accept(this);        
         return null;
     }
 
@@ -105,7 +106,7 @@ public class SQLGenerator implements JQLVisitor {
             }
         }
         sb.append(")");
-        queryModel.setCurrentConditionPart(sb.toString());
+        queryModel.setCurrentConditionPart(sb.toString());        
         return null;
     }
 
