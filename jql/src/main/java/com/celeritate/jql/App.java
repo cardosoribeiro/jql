@@ -2,6 +2,8 @@ package com.celeritate.jql;
 
 import com.celeritate.jql.lexic.JQLLexer;
 import com.celeritate.jql.syntactic.JQLParser;
+import com.celeritate.jql.generation.SQLGenerator;
+import com.celeritate.jql.generation.StructuredQueryModel;
 import java.io.FileReader;
 
 import com.celeritate.jql.ast.Query;
@@ -11,10 +13,11 @@ import com.celeritate.jql.ast.Query;
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("JQL to SQL tradutor!");
         
         try {        
-            //Class.forName("java_cup.runtime.Scanner");    
+            Class.forName("java_cup.runtime.Scanner");    
+
             String filePath = ".\\query.jql";
             
             JQLLexer.enumerateTokens(filePath);
@@ -24,8 +27,12 @@ public class App {
 
             Query qry = (Query) parser.parse().value;   
 
-            System.out.println("I am parsing JQL!");
+            SQLGenerator generator = new SQLGenerator();
+            generator.visitQuery(qry);            
+            String sql = generator.getQueryModel().generateSQL();
 
+            System.out.println("I am parsing JQL!");
+            System.out.println(sql);
         } catch (Exception e) {
             e.printStackTrace();
         }		
