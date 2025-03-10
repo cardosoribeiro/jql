@@ -93,12 +93,12 @@ delete_field ::= DELETE COLON condition:c {: RESULT = new DeleteField(c); :};
 string_list ::= STRING_LITERAL:sl {:
         java.util.List<String> list = new java.util.ArrayList<String>();
         String myStr = (String) sl;
-        list.add(myStr.substring(1, myStr.length() - 1));
+        list.add(myStr);
         RESULT = list;
     :}
               | STRING_LITERAL:sl COMMA string_list:sls {:
         String myStr = (String) sl;
-        sls.add(0, myStr.substring(1, myStr.length() - 1));
+        sls.add(0, myStr);
         RESULT = sls;
     :};
 
@@ -112,7 +112,7 @@ order_by_list ::= order_by_item:obi {:
         RESULT = obil;
     :};
 
-order_by_item ::= LBRACE STRING_LITERAL:name COLON asc_desc:ad RBRACE {: String myStr = (String) name; RESULT = new OrderByItem(myStr.substring(1, myStr.length() - 1), ad); :};
+order_by_item ::= LBRACE STRING_LITERAL:name COLON asc_desc:ad RBRACE {: String myStr = (String) name; RESULT = new OrderByItem(myStr, ad); :};
 
 asc_desc ::= ASC {: RESULT = "ASC"; :} | DESC {: RESULT = "DESC"; :};
 
@@ -136,14 +136,14 @@ logical_expression_list ::= logical_expression:le {:
 
 atomic_condition ::= LBRACE condition_item:ci RBRACE {: RESULT = new AtomicCondition(ci); :};
 
-condition_item ::= STRING_LITERAL:name COLON condition_value:cv {: String myStr = (String) name; RESULT = new ConditionItem(myStr.substring(1, myStr.length() - 1), cv); :};
+condition_item ::= STRING_LITERAL:name COLON condition_value:cv {: String myStr = (String) name; RESULT = new ConditionItem(myStr, cv); :};
 
-condition_value ::= equality_value:ev {: String myStr = (String) ev; RESULT = new ConditionValue("=", myStr.substring(1, myStr.length() - 1)); :}
+condition_value ::= equality_value:ev {: String myStr = (String) ev; RESULT = new ConditionValue("=", myStr); :}
                   | operator_value:ov {: RESULT = ov; :};
 
 equality_value ::= value:v {: RESULT = v; :};
 
-operator_value ::= LBRACE operator:op COLON value:v RBRACE {: String myStr = (String) v; RESULT = new ConditionValue(op, myStr.substring(1, myStr.length() - 1)); :};
+operator_value ::= LBRACE operator:op COLON value:v RBRACE {: String myStr = (String) v; RESULT = new ConditionValue(op, myStr); :};
 
 operator ::= EQ {: RESULT = "="; :} | NE {: RESULT = "!="; :} | LT {: RESULT = "<"; :} | GT {: RESULT = ">"; :} | LTE {: RESULT = "<="; :} | GTE {: RESULT = ">="; :} | LIKE {: RESULT = "LIKE"; :} | IN {: RESULT = "IN"; :};
 
@@ -164,5 +164,5 @@ key_value_pairs ::= string_value_pair:svp {:
     :};
 
 string_value_pair ::= STRING_LITERAL:name COLON value:val {:
-    String myStr = (String) name; String myStr2 = (String) val; RESULT = new StringValuePair(myStr.substring(1, myStr.length() - 1), myStr2.substring(1, myStr2.length() - 1));
+    String myStr = (String) name; String myStr2 = (String) val; RESULT = new StringValuePair(myStr, myStr2);
 :};

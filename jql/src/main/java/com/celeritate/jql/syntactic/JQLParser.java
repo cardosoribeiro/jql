@@ -525,7 +525,7 @@ class CUP$JQLParser$actions {
 		
         java.util.List<String> list = new java.util.ArrayList<String>();
         String myStr = (String) sl;
-        list.add(myStr.substring(1, myStr.length() - 1));
+        list.add(myStr);
         RESULT = list;
     
               CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("string_list",12, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
@@ -544,7 +544,7 @@ class CUP$JQLParser$actions {
 		java.util.List<String> sls = (java.util.List<String>)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
 		
         String myStr = (String) sl;
-        sls.add(0, myStr.substring(1, myStr.length() - 1));
+        sls.add(0, myStr);
         RESULT = sls;
     
               CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("string_list",12, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
@@ -595,7 +595,7 @@ class CUP$JQLParser$actions {
 		int adleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).left;
 		int adright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).right;
 		String ad = (String)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).value;
-		 String myStr = (String) name; RESULT = new OrderByItem(myStr.substring(1, myStr.length() - 1), ad); 
+		 String myStr = (String) name; RESULT = new OrderByItem(myStr, ad); 
               CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("order_by_item",14, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
@@ -746,7 +746,7 @@ class CUP$JQLParser$actions {
 		int cvleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
 		int cvright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
 		ConditionValue cv = (ConditionValue)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
-		 String myStr = (String) name; RESULT = new ConditionItem(myStr.substring(1, myStr.length() - 1), cv); 
+		 String myStr = (String) name; RESULT = new ConditionItem(myStr, cv); 
               CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("condition_item",19, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
@@ -758,7 +758,7 @@ class CUP$JQLParser$actions {
 		int evleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).left;
 		int evright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
 		String ev = (String)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
-		 String myStr = (String) ev; RESULT = new ConditionValue("=", myStr.substring(1, myStr.length() - 1)); 
+		 String myStr = (String) ev; RESULT = new ConditionValue("=", myStr); 
               CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("condition_value",20, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
@@ -797,7 +797,7 @@ class CUP$JQLParser$actions {
 		int vleft = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).left;
 		int vright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).right;
 		String v = (String)((java_cup.runtime.Symbol) CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-1)).value;
-		 String myStr = (String) v; RESULT = new ConditionValue(op, myStr.substring(1, myStr.length() - 1)); 
+		 String myStr = (String) v; RESULT = new ConditionValue(op, myStr); 
               CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("operator_value",22, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-4)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
           return CUP$JQLParser$result;
@@ -979,7 +979,7 @@ class CUP$JQLParser$actions {
 		int valright = ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()).right;
 		String val = (String)((java_cup.runtime.Symbol) CUP$JQLParser$stack.peek()).value;
 		
-    String myStr = (String) name; String myStr2 = (String) val; RESULT = new StringValuePair(myStr.substring(1, myStr.length() - 1), myStr2.substring(1, myStr2.length() - 1));
+    String myStr = (String) name; String myStr2 = (String) val; RESULT = new StringValuePair(myStr, myStr2);
 
               CUP$JQLParser$result = parser.getSymbolFactory().newSymbol("string_value_pair",27, ((java_cup.runtime.Symbol)CUP$JQLParser$stack.elementAt(CUP$JQLParser$top-2)), ((java_cup.runtime.Symbol)CUP$JQLParser$stack.peek()), RESULT);
             }
