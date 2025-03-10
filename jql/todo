@@ -1,2 +1,2 @@
 1. Test if the string are treated correctly in the JqlParser.ast.cup
-
+2. Use the error terminal in the parser {: System.err.println("Error in query. Skipping to end of query."); :};
